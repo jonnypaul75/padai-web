@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-// import { useChatPanelStore } from '../../stores/chatPanelStore';
+import { useChatPanelStore } from '../../stores/chatPanelStore';
 import { useLocation } from 'react-router-dom';
 import { apiProxyRequest } from '../../lib/api-client-proxy';
 import type { AudioFFMPEGResponse } from '../../types/media';
@@ -18,7 +18,7 @@ export default function HtmlViewer({ url }: { url: string }) {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
-  // const { open, setQueryInput } = useChatPanelStore();
+  const { open, setQueryInput } = useChatPanelStore();
   const location = useLocation();
 
   useEffect(() => {
