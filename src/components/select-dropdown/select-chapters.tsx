@@ -10,7 +10,7 @@ import { FaDownload, FaPlay, FaYoutube } from "react-icons/fa";
 import { BsFiletypeHtml } from "react-icons/bs";
 import { MdOutlineMenuBook, MdQuiz } from "react-icons/md";
 import type { ToggleSection } from "../../types/common";
-
+import ongoing2 from "../../assets/ongoing-2.webp";
 interface Props {
   onSelectResource: (resourceId: string | null) => void;
   chapters: Chapter[];
@@ -86,9 +86,9 @@ const SelectChapter = ({
                 <div className="me-2">
                   {
                     item.image ? (
-                      <img src={item.image} alt="" />
+                      <img src={item.image} alt=""   style={{height:'60px',width:'60px'}}/>
                     ) : (
-                      <img src="/ongoing-2.webp" alt="" />
+                      <img src={ongoing2} alt=""   style={{height:'60px',width:'60px'}}/>
                     )
                   }
 

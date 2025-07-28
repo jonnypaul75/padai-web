@@ -52,7 +52,7 @@ const SelectSubject = ({ classId,onSelectSubject }: Props) => {
                 <div className="me-2">
                   {
                     item.image ?
-                    <img src={item.image} className="w-100" />
+                    <img src={item.image}   style={{height:'60px',width:'60px'}}/>
                     :
                     <img src="/ongoing-2.webp" alt="" />
                   }

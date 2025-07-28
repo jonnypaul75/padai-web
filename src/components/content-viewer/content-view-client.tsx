@@ -836,14 +836,7 @@ export default function ContentViewClient({ resourceId }: ContentViewProps) {
       ) : resource.contentType === "web-link" ? (
         <>
           <>
-            <div className="d-flex justify-content-end mb-2">
-
-              <div className="ms-auto d-flex gap-2">
-                <button className="btn btn-sm btn-primary" onClick={() => setLeftWidth('50%')}>
-                  Reset View
-                </button>
-              </div>
-            </div>
+           
             <div style={{ height: '100%', width: '100%', boxSizing: 'border-box' }}>
 
 
