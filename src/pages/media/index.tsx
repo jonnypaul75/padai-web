@@ -163,66 +163,69 @@ export default function Media() {
         </div>
 
         {/* Video View */}
-
-        <div className={`${isOpen ? "w-75" : "w-100 flex-grow-1"} content-area position-relative`} id="contentArea" style={{ backgroundColor: "#f5f5f5" }}>
-          <div className="content-card p-0">
-            {selectedVideo && (
-              <>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    padding: "0 12px 20px",
-                    flexShrink: 0,
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 10,
-                    background: "#fcfcfc",
-                  }}
-                >
-                  <div style={{ width: "100%", maxWidth: "800px" }}>
-                    <div className="video-section">
-
-                      <VideoPlayer
-                        video={{
-                          id: selectedVideo.id.toString(),
-                          title: selectedVideo.title,
-                          url: selectedVideo.url || "",
-                          thumbnail: selectedVideo.thumbnail || "",
-                          duration: selectedVideo.duration || "",
-                          description: selectedVideo.descriptionFile || "",
-                        }}
-                      />
-
-
-
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ flex: 1, overflowY: "clip" }}>
-                  {/* Scrollable Tab Content */}
-                  <div
-                    style={{
-                      flexGrow: 1,
-                      overflowY: "auto",
-                      padding: "0 12px 12px",
-                      background: "#fcfcfc",
-                      textAlign: "start",
-                    }}
-                  >
-                    <div className="html-wrapper"
-                    >
-                      <HtmlViewer url={selectedVideo.descriptionFile || ""} />
-                    </div>
-                  </div>
-                </div>
-              </>
-
-            )}
+<div
+  className={`${isOpen ? "w-75" : "w-100 flex-grow-1"} content-area position-relative`}
+  id="contentArea"
+  style={{ backgroundColor: "#f5f5f5" }}
+>
+  <div className="content-card p-0">
+    {selectedVideo && (
+      <div style={{ display: "flex", flexDirection: "row", gap: "12px", padding: "12px" }}>
+        {/* Left Panel - Video */}
+        <div
+          style={{
+            flex: "1 1 50%",
+            maxWidth: "50%",
+            background: "#fcfcfc",
+            paddingRight: "6px",
+          }}
+        >
+          <div
+            style={{
+              position: "sticky",
+              top: 0,
+              zIndex: 10,
+              background: "#fcfcfc",
+              paddingBottom: "12px",
+            }}
+          >
+            <VideoPlayer
+              video={{
+                id: selectedVideo.id.toString(),
+                title:
+                  selectedVideo.title.length > 10
+                    ? selectedVideo.title.slice(0, 10) + "..."
+                    : selectedVideo.title,
+                url: selectedVideo.url || "",
+                thumbnail: selectedVideo.thumbnail || "",
+                duration: selectedVideo.duration || "",
+                description: selectedVideo.descriptionFile || "",
+              }}
+            />
           </div>
         </div>
 
+        {/* Right Panel - HTML Viewer */}
+        <div
+          style={{
+            flex: "1 1 50%",
+            maxWidth: "50%",
+            minHeight:'600px',
+            overflowY: "auto",
+            background: "#fcfcfc",
+            paddingLeft: "6px",
+          }}
+        >
+          <div className="html-wrapper">
+            <HtmlViewer url={selectedVideo.descriptionFile || ""} />
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</div>
+
+       
 
       </div>
       <ChatPanel />
