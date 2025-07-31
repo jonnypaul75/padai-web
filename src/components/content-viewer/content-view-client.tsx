@@ -680,121 +680,111 @@ export default function ContentViewClient({ resourceId }: ContentViewProps) {
     <div className={`card mt-0 ${resource.contentType}`}>
       {resource.contentType === "video" ? (
         <>
-          {/* Video Player */}
-          <div className="content-card p-0">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "0 12px 20px",
-                flexShrink: 0,
-                position: "sticky",
-                top: 0,
-                zIndex: 10,
-                background: "#fcfcfc",
-              }}
-            >
-              <div style={{ width: "100%", maxWidth: "800px" }}>
-                <div className="video-section">
-                  {/* {selectedVideo?.contentType === "audio" && (
-                                                    <img
-                                                        src={selectedVideo.thumbnail}
-                                                        alt="Audio Poster"
-                                                        className="audio-poster max-w-full h-auto"
-                                                    />
-                                                )} */}
-                  <VideoPlayer
-                    video={{
-                      id: resource.id.toString(),
-                      title: resource.name,
-                      url: resource.url || "",
-                      thumbnail: "",
-                      duration: "",
-                      description: resource.content || "",
-                    }}
-                  />
+          <div className="content-card p-0" style={{ display: "flex", flexDirection: "row", height: "100%", background: "#fcfcfc" }}>
+            {/* Left: Video Player */}
+            <div style={{ width: "50%", padding: "12px", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 10,
+                  background: "#fcfcfc",
+                  paddingBottom: "12px",
+                }}
+              >
+                <div style={{ width: "100%", maxWidth: "800px" }}>
+                  <div className="video-section">
+                    <VideoPlayer
+                      video={{
+                        id: resource.id.toString(),
+                        title: resource.name,
+                        url: resource.url || "",
+                        thumbnail: "",
+                        duration: "",
+                        description: resource.content || "",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div style={{ flex: 1, overflowY: "clip" }}>
-              {/* Scrollable Tab Content */}
-              <div
-                style={{
-                  flexGrow: 1,
-                  overflowY: "auto",
-                  padding: "0 12px 12px",
-                  background: "#fcfcfc",
-                  textAlign: "start",
-                }}
-              >
-                <div className="html-wrapper"
-                >
-                  <HtmlViewer url={resource.htmlView || ""} />
-                </div>
+            {/* Right: HTML Viewer */}
+            <div style={{ width: "50%", padding: "12px", overflowY: "auto", textAlign: "start" }}>
+              <div className="html-wrapper">
+                <HtmlViewer url={resource.htmlView || ""} />
               </div>
             </div>
           </div>
+
         </>
       ) : resource.contentType === "youtube-video" ? (
         <>
-          {/* Video Player */}
-          <div className="content-card p-0">
+          <div
+            className="content-card p-0"
+            style={{
+              display: "flex",
+              flexDirection: "row", // 🔁 side-by-side
+              width: "100%",
+              background: "#fcfcfc",
+              height: "calc(100vh - 100px)", // optional: control overall height
+            }}
+          >
+            {/* Left: Video Section */}
             <div
               style={{
+                width: "50%", // Adjust to your needs
+                padding: "12px",
+                boxSizing: "border-box",
                 display: "flex",
-                justifyContent: "center",
-                padding: "0 12px 20px",
-                flexShrink: 0,
-                position: "sticky",
-                top: 0,
-                zIndex: 10,
-                background: "#fcfcfc",
+                flexDirection: "column",
               }}
             >
-              <div style={{ width: "100%", maxWidth: "1000px" }}>
-                <div className="video-section">
-                  {/* {selectedVideo?.contentType === "audio" && (
-                                                    <img
-                                                        src={selectedVideo.thumbnail}
-                                                        alt="Audio Poster"
-                                                        className="audio-poster max-w-full h-auto"
-                                                    />
-                                                )} */}
-                  <YouTubePlayer
-                    video={{
-                      id: resource.id,
-                      title: resource.name,
-                      url: resource.url || "",
-                      thumbnail: "",
-                      duration: "",
-                      description: resource.content || "",
-                    }}
-                  />
-
+              <div
+                style={{
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 10,
+                  background: "#fcfcfc",
+                }}
+              >
+                <div style={{ width: "100%", maxWidth: "100%" }}>
+                  <div className="video-section">
+                    <YouTubePlayer
+                      video={{
+                        id: resource.id,
+                        title: resource.name,
+                        url: resource.url || "",
+                        thumbnail: "",
+                        duration: "",
+                        description: resource.content || "",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div style={{ flex: 1, overflowY: "clip" }}>
-              {/* Scrollable Tab Content */}
-              <div
-                style={{
-                  flexGrow: 1,
-                  overflowY: "auto",
-                  padding: "0 12px 12px",
-                  background: "#fcfcfc",
-                  textAlign: "start",
-                }}
-              >
-                <div className="html-wrapper"
-                >
-                  <HtmlViewer url={resource.htmlView || ""} />
-                </div>
+            {/* Right: HTML Viewer */}
+            <div
+              style={{
+                width: "50%", // Adjust to your needs
+                padding: "12px",
+                boxSizing: "border-box",
+                overflowY: "auto",
+                textAlign: "start",
+              }}
+            >
+              <div className="html-wrapper">
+                <HtmlViewer url={resource.htmlView || ""} />
               </div>
             </div>
           </div>
         </>
+
       ) : resource.contentType === "html" ? (
         <HtmlViewer url={resource.url || ""} />
       ) : resource.contentType === "interactive" &&
@@ -836,7 +826,7 @@ export default function ContentViewClient({ resourceId }: ContentViewProps) {
       ) : resource.contentType === "web-link" ? (
         <>
           <>
-           
+
             <div style={{ height: '100%', width: '100%', boxSizing: 'border-box' }}>
 
 
