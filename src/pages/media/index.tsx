@@ -210,7 +210,7 @@ export default function Media() {
           style={{
             flex: "1 1 50%",
             maxWidth: "50%",
-            minHeight:'600px',
+            minHeight:'80vh',
             overflowY: "auto",
             background: "#fcfcfc",
             paddingLeft: "6px",
