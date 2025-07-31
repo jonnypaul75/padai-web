@@ -53,17 +53,17 @@ const QuizPlayer = ({ questions }: QuizProps) => {
   return (
     <div
       style={{
-        maxWidth: 600,
+        maxWidth: '100vh',
         width: "100%",
-        margin: "0 auto 20px ",
-        padding: 20,
+        margin: "0 auto 10px ",
+        padding: 8,
         fontFamily: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
         background: "#f9f9f9",
         borderRadius: 12,
-        boxShadow: "0 0 15px rgba(0,0,0,0.1)",
+        boxShadow: "0 0 10px rgba(186, 181, 107, 0.1)",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: 15 }}>Quiz</h2>
+      <h2 style={{ textAlign: "center", marginBottom: 5 }}>Quiz</h2>
 
       {!submitted ? (
         <>
@@ -103,7 +103,7 @@ const QuizPlayer = ({ questions }: QuizProps) => {
           {/* Question Text */}
           <div
             style={{
-              fontSize: "1.1rem",
+              fontSize: "1rem",
               fontWeight: "700",
               color: "#f97316",
               marginBottom: 8,
