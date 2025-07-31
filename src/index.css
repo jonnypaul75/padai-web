@@ -1653,6 +1653,7 @@ svg {
   user-select: none;
   margin: auto;
   perspective: 1500px;
+  min-height: 400px;
 }
 
 .card-content {
@@ -1720,25 +1721,27 @@ svg {
 }
 
 .card-text {
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.3rem;
   color: #009b9b;
   text-shadow: 1px 1px 2px #f97316aa;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  /*-webkit-line-clamp: 3;
+   -webkit-box-orient: vertical; */
 }
 
 .card-answer {
+  font-weight: 500;
+  font-size: 1.3rem;
   padding: 0 10px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #dff0f0;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  /*webkit-line-clamp: 3;
+   -webkit-box-orient: vertical; */
 }
 
 .aspect-video {
