@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import type { FlashcardData } from '../../types/media';
 
@@ -11,6 +11,9 @@ const Flashcard = ({ question, answer, image }: FlashcardData) => {
             setFlipped(prev => !prev);
         }
     };
+    useEffect(() => {
+        setFlipped(false);
+    }, [question, answer, image]); // ensures reset when content changes
 
     return (
         <div
